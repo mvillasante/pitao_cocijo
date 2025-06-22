@@ -10,3 +10,4 @@ def test_plot_series():
     assert isinstance(obtained, matplotlib.axes._axes.Axes)
     assert obtained.get_xticklabels()[1].get_rotation() == 45
     matplotlib.pyplot.savefig("prueba.png")
+    assert obtained.get_ylabel("Lluvia díaria (mm)")
