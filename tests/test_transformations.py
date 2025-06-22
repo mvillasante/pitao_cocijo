@@ -1,9 +1,8 @@
-import cocijo as dt
+from cocijo.plot_series import plot_series
+
+import pandas as pd
 
 
-def test_add_offset():
-    augend = 1
-    addend = 2
-    expected = augend + addend
-    obtained = dt.add_offset(augend, addend)
-    assert expected == obtained
+def test_plot_series():
+    data = pd.read_csv("data/registro_lluvias.csv")
+    plot_series(data)
