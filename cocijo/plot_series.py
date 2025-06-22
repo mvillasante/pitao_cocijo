@@ -1,2 +1,5 @@
+import matplotlib.pyplot as plt
+
+
 def plot_series(data):
-    pass
+    return plt.plot(data.Fecha, data.mm)
