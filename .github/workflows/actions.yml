@@ -48,6 +48,7 @@ jobs:
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+        slug: mvillasante/pitao_cocijo
     - name: Create/Update tag
       uses: rickstaa/action-create-tag@v1.5.4
       with:
