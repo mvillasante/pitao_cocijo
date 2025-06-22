@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: mvillasante/basic_python_project:latest
+    image: mvillasante/cosijo:latest
     command: bash
     volumes:
       - $PWD:/workdir

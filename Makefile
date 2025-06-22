@@ -13,7 +13,7 @@ all: check coverage mutants
 		setup \
 		tests
 
-module = module
+module = cocijo
 codecov_token = 6c56bccb-1758-4ed9-8161-97c845591c26
 
 define lint
@@ -49,7 +49,9 @@ format:
 	black --line-length 100 ${module}
 	black --line-length 100 tests
 
-init: setup tests
+init: init setup tests
+
+init_git:
 	git config --global --add safe.directory /workdir
 	git config --global user.name "Mario VB"
 	git config --global user.email "mario.villasante@islas.org.mx"

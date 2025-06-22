@@ -1,4 +1,4 @@
-import module as dt
+import cocijo as dt
 
 
 def test_add_offset():
