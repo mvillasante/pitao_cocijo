@@ -7,4 +7,5 @@ import matplotlib
 def test_plot_series():
     data = pd.read_csv("data/registro_lluvias.csv")
     obtained = plot_series(data)
-    assert isinstance(obtained[0], matplotlib.lines.Line2D)
+    assert isinstance(obtained, matplotlib.axes._axes.Axes)
+    matplotlib.pyplot.savefig("prueba.png")

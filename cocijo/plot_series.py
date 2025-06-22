@@ -2,4 +2,6 @@ import matplotlib.pyplot as plt
 
 
 def plot_series(data):
-    return plt.plot(data.Fecha, data.mm)
+    fig, ax = plt.subplots()
+    line = ax.plot(data.Fecha, data.mm)
+    return ax
