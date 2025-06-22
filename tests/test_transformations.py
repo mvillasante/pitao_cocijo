@@ -8,4 +8,5 @@ def test_plot_series():
     data = pd.read_csv("data/registro_lluvias.csv")
     obtained = plot_series(data)
     assert isinstance(obtained, matplotlib.axes._axes.Axes)
+    assert obtained.get_xticklabels()[1].get_rotation() == 45
     matplotlib.pyplot.savefig("prueba.png")
