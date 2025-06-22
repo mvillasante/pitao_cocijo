@@ -7,6 +7,7 @@ RUN pip install --upgrade pip && pip install \
     mutmut \
     mypy \
     pandas-stubs \
+    matplotlib-stubs \
     pylint \
     pytest \
     pytest-cov
