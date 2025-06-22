@@ -1,0 +1,9 @@
+services:
+  develop:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: islasgeci/basic_python_project:latest
+    command: bash
+    volumes:
+      - $PWD:/workdir
