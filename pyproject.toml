@@ -11,6 +11,7 @@ home-page = "https://github.com/IslasGECI/module"
 module = "cocijo"
 requires = [
 	"pandas",
+	"pandas-stubs",
 	"matplotlib"
 ]
 requires-python=">=3.9"
