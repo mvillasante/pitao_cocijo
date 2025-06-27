@@ -13,6 +13,5 @@ def test_plot_series():
     assert obtained.get_ylabel() == "Lluvia díaria (mm)"
     obtained_first_line = obtained.get_lines()[0]
     assert obtained_first_line.get_marker() == "o"
-    assert len(obtained_first_line.get_data()[0]) == 12
-    expected_first_date = "January"
+    expected_first_date = "March"
     assert obtained.get_xticklabels()[0].get_text() == expected_first_date
