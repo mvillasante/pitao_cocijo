@@ -25,5 +25,5 @@ def test_plot_cumulative():
     obtained = plot_cumulative(data)
     obtained_first_line = obtained.get_lines()[0]
     assert max(obtained_first_line.get_data()[1]) > data.mm.max()
-    assert obtained_first_line.get_marker() == "o"
+    assert obtained_first_line.get_marker() == "."
     matplotlib.pyplot.savefig("lluvia_acumulada.png")
