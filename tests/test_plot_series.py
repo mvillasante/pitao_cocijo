@@ -1,11 +1,13 @@
-from cocijo.plot_series import plot_series
+from cocijo.plot_series import plot_series, plot_cumulative
 
 import pandas as pd
 import matplotlib
 
 
+data = pd.read_csv("data/registro_lluvias.csv")
+
+
 def test_plot_series():
-    data = pd.read_csv("data/registro_lluvias.csv")
     obtained = plot_series(data)
     assert isinstance(obtained, matplotlib.axes._axes.Axes)
     assert obtained.get_xticklabels()[1].get_rotation() == 90
@@ -17,3 +19,9 @@ def test_plot_series():
     assert obtained_first_line.get_linestyle() == "None"
 
     matplotlib.pyplot.savefig("lluvia_diaria.png")
+
+
+def test_plot_cumulative():
+    obtained = plot_cumulative(data)
+    # obtained_first_line = obtained.get_lines()[0]
+    # assert obtained_first_line.get_data()[1] > data.mm.max()
