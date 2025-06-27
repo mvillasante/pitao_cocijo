@@ -6,11 +6,10 @@ def plot_series(data):
     fig, ax = plt.subplots()
     data["Fecha"] = pd.to_datetime(data["Fecha"], format="%Y-%m-%d")
     data["MesDia"] = data["Fecha"].dt.strftime("%m-%d")
-    data.set_index("MesDia", inplace=True)
-    full_dates = pd.date_range(start="1900-01-01", end="1900-12-01", freq="MS")
-    data = data.reindex(full_dates.strftime("%m-%d"), fill_value=0)
-
-    ax.plot(full_dates, data.mm, marker="o")
+    data.set_index("Fecha", inplace=True)
+    full_date = pd.date_range(start=data.index.min(), end=data.index.max())
+    data = data.reindex(full_date)
+    ax.plot(data.mm, marker="o")
     labels = [
         pd.to_datetime(label.get_text(), format="%Y-%m").month_name()
         for label in ax.get_xticklabels()
