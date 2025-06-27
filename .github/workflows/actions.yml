@@ -31,8 +31,8 @@ jobs:
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git add lluvia_diaria.png
-        git commit -m "generated"
+        git add lluvia_diaria.png lluvia_acumulada.png
+        git commit -m "🤖📈 generated"
         git push
     - name: 🏷️ Create/Update tag
       uses: rickstaa/action-create-tag@v1.5.4
