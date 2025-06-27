@@ -11,4 +11,5 @@ def test_plot_series():
     assert obtained.get_xticklabels()[1].get_rotation() == 90
     matplotlib.pyplot.savefig("prueba.png")
     assert obtained.get_ylabel() == "Lluvia díaria (mm)"
-    assert obtained.get_lines()[0].get_marker() == "o"
+    obtained_first_line = obtained.get_lines()[0]
+    assert obtained_first_line.get_marker() == "o"
