@@ -5,3 +5,7 @@ parameter](https://github.com/mvillasante/pitao_cocijo/actions/workflows/actions
 ![languages](https://img.shields.io/github/languages/top/mvillasante/pitao_cocijo)
 ![commits](https://img.shields.io/github/commit-activity/y/mvillasante/pitao_cocijo)
 
+
+LLuvia en Mitla, Oaxaca 2024:
+
+<img title="Lluvia diaria anual" alt="" src="lluvia_diaria.png">
