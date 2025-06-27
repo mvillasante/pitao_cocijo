@@ -2,6 +2,17 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
+def plot_cumulative(raw_data):
+    data = setup_data(raw_data)
+    fig, ax = plt.subplots()
+    ax.plot(data.mm.cumsum())
+    setup_xticks(ax)
+    plt.xticks(rotation=90)
+    plt.ylabel("Lluvia díaria (mm)")
+    plt.tight_layout()
+    return ax
+
+
 def plot_series(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
