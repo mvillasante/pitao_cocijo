@@ -13,3 +13,4 @@ def test_plot_series():
     assert obtained.get_ylabel() == "Lluvia díaria (mm)"
     obtained_first_line = obtained.get_lines()[0]
     assert obtained_first_line.get_marker() == "o"
+    assert len(obtained_first_line.get_data()[0]) == 12
