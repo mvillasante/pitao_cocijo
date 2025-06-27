@@ -9,7 +9,7 @@ def plot_series(data):
     data.set_index("Fecha", inplace=True)
     full_date = pd.date_range(start=data.index.min(), end=data.index.max())
     data = data.reindex(full_date)
-    ax.plot(data.mm, marker="o")
+    ax.plot(data.mm, marker="o", linestyle=None)
     labels = [
         pd.to_datetime(label.get_text(), format="%Y-%m").month_name()
         for label in ax.get_xticklabels()
