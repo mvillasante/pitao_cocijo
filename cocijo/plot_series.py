@@ -6,12 +6,7 @@ def plot_series(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
     ax.plot(data.mm, marker="o", linestyle="")
-    labels = [
-        pd.to_datetime(label.get_text(), format="%Y-%m").month_name()
-        for label in ax.get_xticklabels()
-    ]
-    positions = [label.get_position()[0] for label in ax.get_xticklabels()]
-    ax.set_xticks(positions, labels)
+    setup_xticks(ax)
     plt.xticks(rotation=90)
     plt.ylabel("Lluvia díaria (mm)")
     plt.tight_layout()
@@ -26,3 +21,12 @@ def setup_data(raw_data):
     full_date = pd.date_range(start=data.index.min(), end=data.index.max())
     data = data.reindex(full_date)
     return data
+
+
+def setup_xticks(ax):
+    labels = [
+        pd.to_datetime(label.get_text(), format="%Y-%m").month_name()
+        for label in ax.get_xticklabels()
+    ]
+    positions = [label.get_position()[0] for label in ax.get_xticklabels()]
+    ax.set_xticks(positions, labels)
