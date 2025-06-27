@@ -8,7 +8,7 @@ def plot_cumulative(raw_data):
     ax.plot(data.mm.cumsum(), marker=".")
     setup_xticks(ax)
     plt.xticks(rotation=90)
-    plt.ylabel("Lluvia díaria (mm)")
+    plt.ylabel("Lluvia acumulada (mm)")
     plt.tight_layout()
     return ax
 
