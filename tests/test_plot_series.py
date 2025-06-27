@@ -15,3 +15,4 @@ def test_plot_series():
     assert obtained_first_line.get_marker() == "o"
     expected_first_date = "March"
     assert obtained.get_xticklabels()[0].get_text() == expected_first_date
+    assert obtained_first_line.get_linestyle() is None
