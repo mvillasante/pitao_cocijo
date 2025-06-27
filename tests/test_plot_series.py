@@ -23,6 +23,6 @@ def test_plot_series():
 
 def test_plot_cumulative():
     obtained = plot_cumulative(data)
-    # obtained_first_line = obtained.get_lines()[0]
-    # assert obtained_first_line.get_data()[1] > data.mm.max()
+    obtained_first_line = obtained.get_lines()[0]
+    assert max(obtained_first_line.get_data()[1]) > data.mm.max()
     matplotlib.pyplot.savefig("lluvia_acumulada.png")
