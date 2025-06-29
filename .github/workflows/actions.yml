@@ -27,7 +27,14 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: mvillasante/pitao_cocijo
+    - uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          images:
+            - '*.png'
     - name: 💫📈 Update graphics
+      if: steps.filter.outputs.backend == 'true'
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
