@@ -19,8 +19,6 @@ def test_plot_series():
     assert obtained.get_xticklabels()[0].get_text() == expected_first_date
     assert obtained_first_line.get_linestyle() == "None"
 
-    matplotlib.pyplot.savefig("lluvia_diaria.png")
-
 
 def test_plot_cumulative():
     obtained = plot_cumulative(data)
