@@ -4,14 +4,15 @@ import pandas as pd
 import matplotlib
 
 
-
-
 def test_plot_2024():
     data = pd.read_csv("data/registro_lluvias.csv")
     plot_series(data)
     matplotlib.pyplot.savefig("lluvia_diaria.png")
 
+
 data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")
+
+
 def test_plot_series():
     obtained = plot_series(data)
     matplotlib.pyplot.savefig("tests/lluvia_diaria.png")
