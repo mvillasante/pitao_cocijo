@@ -4,11 +4,12 @@ import pandas as pd
 import matplotlib
 
 
-data = pd.read_csv("data/registro_lluvias.csv")
+data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")
 
 
 def test_plot_series():
     obtained = plot_series(data)
+    matplotlib.pyplot.savefig("lluvia_diaria.png")
     assert isinstance(obtained, matplotlib.axes._axes.Axes)
     assert obtained.get_xticklabels()[1].get_rotation() == 90
     assert obtained.get_ylabel() == "Lluvia díaria (mm)"

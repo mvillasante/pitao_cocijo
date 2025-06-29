@@ -30,7 +30,6 @@ def setup_data(raw_data):
     data["MesDia"] = data["Fecha"].dt.strftime("%m-%d")
     data.set_index("Fecha", inplace=True)
     full_date = pd.date_range(start=data.index.min(), end=data.index.max())
-    data = data.reindex(full_date)
     return data
 
 
