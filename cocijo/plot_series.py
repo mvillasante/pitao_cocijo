@@ -5,7 +5,7 @@ import pandas as pd
 def plot_cumulative(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
-    ax.plot(data.mm.cumsum(), marker=".")
+    ax.plot(data.mm.cumsum(), marker=".", markersize=5)
     setup_xticks(ax)
     plt.xticks(rotation=90)
     plt.ylabel("Lluvia acumulada (mm)")
@@ -16,7 +16,7 @@ def plot_cumulative(raw_data):
 def plot_series(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
-    ax.plot(data.mm, marker="o", linestyle="")
+    ax.plot(data.mm, marker="o", linestyle="", markersize=2)
     setup_xticks(ax)
     plt.xticks(rotation=90)
     plt.ylabel("Lluvia díaria (mm)")

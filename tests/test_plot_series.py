@@ -21,6 +21,7 @@ def test_plot_series():
     assert obtained.get_ylabel() == "Lluvia díaria (mm)"
     obtained_first_line = obtained.get_lines()[0]
     assert obtained_first_line.get_marker() == "o"
+    assert obtained_first_line.get_markersize() == 2
     expected_first_date = "March"
     assert obtained.get_xticklabels()[0].get_text() == expected_first_date
     assert obtained_first_line.get_linestyle() == "None"
@@ -28,12 +29,12 @@ def test_plot_series():
 
 def test_plot_cumulative():
     obtained = plot_cumulative(data)
+    matplotlib.pyplot.savefig("tests/lluvia_acumulada.png")
     obtained_first_line = obtained.get_lines()[0]
     assert max(obtained_first_line.get_data()[1]) > data.mm.max()
     assert obtained_first_line.get_marker() == "."
-    assert obtained_first_line.get_markersize() == 1
     assert obtained.get_ylabel() == "Lluvia acumulada (mm)"
-    matplotlib.pyplot.savefig("lluvia_acumulada.png")
+    assert obtained_first_line.get_markersize() == 5
 
 
 def test_setup_data():
