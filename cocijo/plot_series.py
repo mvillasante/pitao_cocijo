@@ -2,6 +2,18 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
+def plot_yearly_rain(raw_data):
+    data = setup_data(raw_data)
+    fig, ax = plt.subplots()
+    for year, group in data.groupby(data.index.year):
+        ax.plot(group.mm, marker="o", linestyle="", markersize=2, label=year)
+    plt.legend()
+    plt.xticks(rotation=90)
+    plt.ylabel("Lluvia diaria (mm)")
+    plt.tight_layout()
+    return ax
+
+
 def plot_cumulative(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
@@ -28,7 +40,7 @@ def setup_data(raw_data):
     data = raw_data.copy()
     data["Fecha"] = pd.to_datetime(data["Fecha"], format="%Y-%m-%d")
     data["MesDia"] = data["Fecha"].dt.strftime("%m-%d")
-    data.set_index("Fecha", inplace=True)
+    data.set_index("Fecha", inplace=True, drop=False)
     full_date = pd.date_range(start=data.index.min(), end=data.index.max())
     data = data.reindex(full_date, fill_value=0)
     return data
