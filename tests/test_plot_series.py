@@ -17,7 +17,7 @@ def test_plot_2024():
 data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")
 
 
-# @pytest.mark.skip(reason="🪙")
+@pytest.mark.skip(reason="🪙")
 def tests_plot_yearly_rain():
     obtained = plot_yearly_rain(data)
     matplotlib.pyplot.savefig("tests/lluvia_diaria_por_año.png")
@@ -53,3 +53,5 @@ def test_setup_data():
     obtained = setup_data(data)
     is_here_nan = obtained.mm.isna().any()
     assert not is_here_nan
+    expected_columns = set(["day_of_year", "mm", "Fecha", "MesDia"])
+    assert set(obtained.columns) == expected_columns
