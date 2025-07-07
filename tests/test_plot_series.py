@@ -31,6 +31,7 @@ def test_plot_cumulative():
     obtained_first_line = obtained.get_lines()[0]
     assert max(obtained_first_line.get_data()[1]) > data.mm.max()
     assert obtained_first_line.get_marker() == "."
+    assert obtained_first_line.get_markersize() == 1
     assert obtained.get_ylabel() == "Lluvia acumulada (mm)"
     matplotlib.pyplot.savefig("lluvia_acumulada.png")
 
