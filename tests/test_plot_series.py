@@ -1,4 +1,4 @@
-from cocijo.plot_series import plot_series, plot_cumulative
+from cocijo.plot_series import plot_series, plot_cumulative, setup_data
 
 import pandas as pd
 import matplotlib
@@ -33,3 +33,10 @@ def test_plot_cumulative():
     assert obtained_first_line.get_marker() == "."
     assert obtained.get_ylabel() == "Lluvia acumulada (mm)"
     matplotlib.pyplot.savefig("lluvia_acumulada.png")
+
+
+def test_setup_data():
+    obtained = setup_data(data)
+    is_here_nan = obtained.mm.isna().any()
+
+    assert not is_here_nan
