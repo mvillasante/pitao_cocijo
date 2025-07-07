@@ -53,5 +53,5 @@ def test_setup_data():
     obtained = setup_data(data)
     is_here_nan = obtained.mm.isna().any()
     assert not is_here_nan
-    expected_columns = set(["dia_del_año", "mm", "Fecha", "MesDia"])
+    expected_columns = set(["dia_del_año", "mm", "Fecha"])
     assert set(obtained.columns) == expected_columns
