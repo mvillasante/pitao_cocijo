@@ -1,4 +1,4 @@
-from cocijo.plot_series import plot_series, plot_cumulative, setup_data
+from cocijo.plot_series import plot_series, plot_cumulative, setup_data, plot_yearly_rain
 
 import pandas as pd
 import matplotlib
@@ -13,6 +13,12 @@ def test_plot_2024():
 
 
 data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")
+
+
+def tests_plot_yearly_rain():
+    obtained = plot_yearly_rain(data)
+    obtained_lines = obtained.get_lines()
+    assert len(obtained_lines) == 2
 
 
 def test_plot_series():
