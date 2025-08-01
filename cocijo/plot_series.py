@@ -28,7 +28,9 @@ def plot_cumulative(raw_data):
 def plot_series(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
-    ax.plot(data.mm, marker="o", linestyle="", markersize=2)
+    print(data.dia_del_año[0])
+    ax.plot(data.dia_del_año, data.mm, marker="o", linestyle="", markersize=2)
+    print(ax.get_xticklabels()[0])
     setup_xticks(ax)
     plt.xticks(rotation=90)
     plt.ylabel("Lluvia díaria (mm)")
@@ -47,9 +49,5 @@ def setup_data(raw_data):
 
 
 def setup_xticks(ax):
-    labels = [
-        pd.to_datetime(label.get_text(), format="%Y-%m").month_name()
-        for label in ax.get_xticklabels()
-    ]
-    positions = [label.get_position()[0] for label in ax.get_xticklabels()]
-    ax.set_xticks(positions, labels)
+    meses = pd.date_range(start="2000-01-01", periods=12, freq="MS")
+    ax.set_xticks(meses.day_of_year, meses.month_name())
