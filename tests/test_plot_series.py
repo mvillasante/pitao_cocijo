@@ -37,6 +37,7 @@ def test_plot_series():
     expected_first_date = "March"
     assert obtained.get_xticklabels()[0].get_text() == expected_first_date
     assert obtained_first_line.get_linestyle() == "None"
+    assert len(obtained.get_children()[0].get_xdata()) < 365
 
 
 def test_plot_cumulative():
