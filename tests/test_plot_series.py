@@ -17,7 +17,6 @@ def test_plot_2024():
 data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")
 
 
-@pytest.mark.skip(reason="🪙")
 def tests_plot_yearly_rain():
     obtained = plot_yearly_rain(data)
     matplotlib.pyplot.savefig("tests/lluvia_diaria_por_año.png")

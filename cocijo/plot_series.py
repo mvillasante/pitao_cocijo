@@ -5,9 +5,10 @@ import pandas as pd
 def plot_yearly_rain(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
-    for year, group in data.groupby(data.index.year):
-        ax.plot(group.mm, marker="o", linestyle="", markersize=2, label=year)
+    for year, group in data.groupby(data.Fecha.dt.year):
+        ax.plot(group.dia_del_año, group.mm, marker="o", linestyle="", markersize=2, label=year)
     plt.legend()
+    setup_xticks(ax)
     plt.xticks(rotation=90)
     plt.ylabel("Lluvia diaria (mm)")
     plt.tight_layout()
