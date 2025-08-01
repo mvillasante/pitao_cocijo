@@ -12,6 +12,8 @@ def test_plot_2024():
     matplotlib.pyplot.savefig("lluvia_diaria.png")
     plot_cumulative(data)
     matplotlib.pyplot.savefig("lluvia_acumulada.png")
+    plot_yearly_rain(data)
+    matplotlib.pyplot.savefig("lluvia_por_año.png")
 
 
 data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")

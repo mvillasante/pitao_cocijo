@@ -9,7 +9,6 @@ def plot_yearly_rain(raw_data):
         ax.plot(group.dia_del_año, group.mm, marker="o", linestyle="", markersize=2, label=year)
     plt.legend()
     setup_xticks(ax)
-    plt.xticks(rotation=90)
     plt.ylabel("Lluvia diaria (mm)")
     plt.tight_layout()
     return ax
@@ -20,7 +19,6 @@ def plot_cumulative(raw_data):
     fig, ax = plt.subplots()
     ax.plot(data.dia_del_año, data.mm.cumsum(), marker=".", markersize=5)
     setup_xticks(ax)
-    plt.xticks(rotation=90)
     plt.ylabel("Lluvia acumulada (mm)")
     plt.tight_layout()
     return ax
@@ -31,7 +29,6 @@ def plot_series(raw_data):
     fig, ax = plt.subplots()
     ax.plot(data.dia_del_año, data.mm, marker="o", linestyle="", markersize=2)
     setup_xticks(ax)
-    plt.xticks(rotation=90)
     plt.ylabel("Lluvia díaria (mm)")
     plt.tight_layout()
     return ax
@@ -46,4 +43,4 @@ def setup_data(raw_data):
 
 def setup_xticks(ax):
     meses = pd.date_range(start="2000-01-01", periods=12, freq="MS")
-    ax.set_xticks(meses.day_of_year, meses.month_name())
+    ax.set_xticks(meses.day_of_year, meses.month_name(), rotation=90)
