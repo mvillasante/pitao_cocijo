@@ -48,6 +48,7 @@ def test_plot_cumulative():
     assert obtained_first_line.get_marker() == "."
     assert obtained.get_ylabel() == "Lluvia acumulada (mm)"
     assert obtained_first_line.get_markersize() == 5
+    assert obtained.get_children()[0].get_xdata()[0] == 48
 
 
 def test_setup_data():
