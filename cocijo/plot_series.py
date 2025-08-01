@@ -17,7 +17,7 @@ def plot_yearly_rain(raw_data):
 def plot_cumulative(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
-    ax.plot(data.mm.cumsum(), marker=".", markersize=5)
+    ax.plot(data.dia_del_año, data.mm.cumsum(), marker=".", markersize=5)
     setup_xticks(ax)
     plt.xticks(rotation=90)
     plt.ylabel("Lluvia acumulada (mm)")
@@ -28,9 +28,7 @@ def plot_cumulative(raw_data):
 def plot_series(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
-    print(data.dia_del_año[0])
     ax.plot(data.dia_del_año, data.mm, marker="o", linestyle="", markersize=2)
-    print(ax.get_xticklabels()[0])
     setup_xticks(ax)
     plt.xticks(rotation=90)
     plt.ylabel("Lluvia díaria (mm)")
