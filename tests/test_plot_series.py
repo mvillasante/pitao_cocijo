@@ -3,17 +3,13 @@ from cocijo.plot_series import plot_series, plot_cumulative, setup_data, plot_ye
 import pandas as pd
 import matplotlib
 
-import pytest
-
 
 def test_plot_2024():
     data = pd.read_csv("data/registro_lluvias.csv")
-    plot_series(data)
+    plot_yearly_rain(data)
     matplotlib.pyplot.savefig("lluvia_diaria.png")
     plot_cumulative(data)
     matplotlib.pyplot.savefig("lluvia_acumulada.png")
-    plot_yearly_rain(data)
-    matplotlib.pyplot.savefig("lluvia_por_año.png")
 
 
 data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")
