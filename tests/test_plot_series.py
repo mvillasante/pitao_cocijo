@@ -12,9 +12,9 @@ import matplotlib
 
 def test_plot_2024():
     data = pd.read_csv("data/registro_lluvias.csv")
-    plot_cumulative_yearly_rain(data)
+    plot_yearly_rain(data)
     matplotlib.pyplot.savefig("lluvia_diaria.png")
-    plot_cumulative(data)
+    plot_cumulative_yearly_rain(data)
     matplotlib.pyplot.savefig("lluvia_acumulada.png")
 
 
