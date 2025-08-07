@@ -1,4 +1,10 @@
-from cocijo.plot_series import plot_series, plot_cumulative, setup_data, plot_yearly_rain, plot_cumulative_yearly_rain
+from cocijo.plot_series import (
+    plot_series,
+    plot_cumulative,
+    setup_data,
+    plot_yearly_rain,
+    plot_cumulative_yearly_rain,
+)
 
 import pandas as pd
 import matplotlib
