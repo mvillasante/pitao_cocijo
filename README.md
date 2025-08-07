@@ -7,7 +7,9 @@ parameter](https://github.com/mvillasante/pitao_cocijo/actions/workflows/actions
 
 
 LLuvia diaria en San Pablo Villa de Mitla:
+
 <img title="Lluvia diaria anual" alt="" src="lluvia_diaria.png">
 
 LLuvia acumulada anual:
+
 <img title="Lluvia acumulada anual" alt="" src="lluvia_acumulada.png">
