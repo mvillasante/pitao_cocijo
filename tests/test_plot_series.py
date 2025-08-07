@@ -1,4 +1,4 @@
-from cocijo.plot_series import plot_series, plot_cumulative, setup_data, plot_yearly_rain
+from cocijo.plot_series import plot_series, plot_cumulative, setup_data, plot_yearly_rain, plot_cumulative_yearly_rain
 
 import pandas as pd
 import matplotlib
@@ -6,7 +6,7 @@ import matplotlib
 
 def test_plot_2024():
     data = pd.read_csv("data/registro_lluvias.csv")
-    plot_yearly_rain(data)
+    plot_cumulative_yearly_rain(data)
     matplotlib.pyplot.savefig("lluvia_diaria.png")
     plot_cumulative(data)
     matplotlib.pyplot.savefig("lluvia_acumulada.png")
