@@ -6,13 +6,23 @@ def plot_yearly_rain(raw_data):
     data = setup_data(raw_data)
     fig, ax = plt.subplots()
     for year, group in data.groupby(data.Fecha.dt.year):
-        ax.plot(group.dia_del_año, group.mm, marker="o", linestyle="", markersize=2, label=year)
+        ax.plot(group.dia_del_año, group.mm, marker="o", linestyle="", markersize=3, label=year)
     plt.legend()
     setup_xticks(ax)
     plt.ylabel("Lluvia diaria (mm)")
     plt.tight_layout()
     return ax
 
+def plot_cumulative_yearly_rain(raw_data):
+    data = setup_data(raw_data)
+    fig, ax = plt.subplots()
+    for year, group in data.groupby(data.Fecha.dt.year):
+        ax.plot(group.dia_del_año, group.mm.cumsum(), marker="o", linestyle="", markersize=3, label=year)
+    plt.legend()
+    setup_xticks(ax)
+    plt.ylabel("Lluvia acumulada (mm)")
+    plt.tight_layout()
+    return ax
 
 def plot_cumulative(raw_data):
     data = setup_data(raw_data)
