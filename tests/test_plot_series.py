@@ -37,7 +37,7 @@ def test_plot_series():
     obtained_first_line = obtained.get_lines()[0]
     assert obtained_first_line.get_marker() == "o"
     assert obtained_first_line.get_markersize() == 2
-    expected_first_date = "January"
+    expected_first_date = "Enero"
     assert obtained.get_xticklabels()[0].get_text() == expected_first_date
     assert obtained_first_line.get_linestyle() == "None"
     assert all(obtained.get_children()[0].get_xdata()) < 365
