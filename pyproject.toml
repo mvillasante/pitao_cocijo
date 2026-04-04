@@ -16,3 +16,5 @@ requires = [
 	"typer"
 ]
 requires-python=">=3.9"
+[tool.flit.scripts]
+cocijo = "cocijo.cli:app"
