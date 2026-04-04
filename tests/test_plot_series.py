@@ -9,15 +9,6 @@ from cocijo.plot_series import (
 import pandas as pd
 import matplotlib
 
-
-def test_plot_2024():
-    data = pd.read_csv("data/registro_lluvias.csv")
-    plot_yearly_rain(data)
-    matplotlib.pyplot.savefig("lluvia_diaria.png")
-    plot_cumulative_yearly_rain(data)
-    matplotlib.pyplot.savefig("lluvia_acumulada.png")
-
-
 data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")
 
 
