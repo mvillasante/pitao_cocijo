@@ -1,3 +1,4 @@
+import cocijo
 import typer
 
 app = typer.Typer()
@@ -5,4 +6,4 @@ app = typer.Typer()
 
 @app.command()
 def version():
-    print("0.1.0")
+    print(cocijo.__version__)
