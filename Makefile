@@ -54,7 +54,7 @@ init: init_git setup tests
 init_git:
 	git config --global --add safe.directory /workdir
 	git config --global user.name "Mario VB"
-	git config --global user.email "mario.villasante@islas.org.mx"
+	git config --global user.email "mario.villasante@ciencias.unam.mx"
 
 install:
 	pip install --editable .
