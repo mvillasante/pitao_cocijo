@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from babel.dates import format_date
 
 
 def plot_yearly_rain(raw_data):
@@ -57,4 +58,5 @@ def setup_data(raw_data):
 
 def setup_xticks(ax):
     meses = pd.date_range(start="2000-01-01", periods=12, freq="MS")
-    ax.set_xticks(meses.day_of_year, meses.month_name(), rotation=90)
+    spanish_months = [format_date(date, format="MMMM", locale="es").capitalize() for date in meses]
+    ax.set_xticks(meses.day_of_year, spanish_months, rotation=90)
