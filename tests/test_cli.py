@@ -11,8 +11,7 @@ def test_write_daily_rain():
     data_path = "tests/data/registro_lluvias_for_test.csv"
     output_path = "tests/data/lluvia_diaria.png"
 
-    if os.path.isfile(output_path):
-        os.remove(output_path)
+    if_exist_remove(output_path)
     result = runner.invoke(
         app, ["write-daily-rain-plot", "--data-path", data_path, "--output-path", output_path]
     )
@@ -24,3 +23,8 @@ def test_version():
     result = runner.invoke(app, ["version"])
     assert result.exit_code == 0
     assert "0.1.0" in result.stdout
+
+
+def if_exist_remove(output_path):
+    if os.path.isfile(output_path):
+        os.remove(output_path)
