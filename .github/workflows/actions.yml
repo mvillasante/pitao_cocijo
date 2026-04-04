@@ -22,13 +22,11 @@ jobs:
       run: docker run mvillasante/cocijo:latest make check
     - name: 🐍☔ Test Python module
       run: docker run --volume $PWD:/workdir mvillasante/cocijo:latest make coverage
-    - name: Upload coverage reports to Codecov
+    - name: ☔⏫ Upload coverage reports to Codecov
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         slug: mvillasante/pitao_cocijo
-    - name: 🐍☔ Test Python module
-      run: docker run --volume $PWD:/workdir mvillasante/cocijo:latest make coverage
     - name: 📈 Generate graphics
       run: |
         docker run --volume $PWD:/workdir mvillasante/cocijo:latest cocijo write-daily-rain-plot --data-path data/registro_lluvias.csv --output-path lluvia_diaria.png 
