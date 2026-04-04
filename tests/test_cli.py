@@ -14,7 +14,7 @@ def test_write_daily_rain():
     if os.path.isfile(output_path):
         os.remove(output_path)
     result = runner.invoke(
-        app, ["write-daily-rain-plot", "data-path", data_path, "output-path", output_path]
+        app, ["write-daily-rain-plot", "--data-path", data_path, "--output-path", output_path]
     )
     assert result.exit_code == 0
     assert os.path.isfile(output_path)
