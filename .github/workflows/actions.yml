@@ -11,9 +11,9 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@main
     - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
+      uses: docker/setup-buildx-action@v4
     - name: 🐋🏗️ Build container 
-      uses: docker/build-push-action@v5
+      uses: docker/build-push-action@v7
       with:
         context: .
         tags: mvillasante/cocijo:latest
@@ -29,6 +29,10 @@ jobs:
         slug: mvillasante/pitao_cocijo
     - name: 🐍☔ Test Python module
       run: docker run --volume $PWD:/workdir mvillasante/cocijo:latest make coverage
+    - name: 📈 Generate graphics
+      run: |
+        docker run --volume $PWD:/workdir mvillasante/cocijo:latest cocijo write-daily-rain-plot --data-path data/registro_lluvias.csv --output-path lluvia_diaria.png 
+        docker run --volume $PWD:/workdir mvillasante/cocijo:latest cocijo write-cumulative-rain-plot --data-path data/registro_lluvias.csv --output-path lluvia_acumulada.png
     - name: Verificar cambios en la figura
       id: check-figure
       run: |
@@ -37,10 +41,6 @@ jobs:
         else
           echo "changes=true" >> $GITHUB_OUTPUT
         fi
-    - name: 📈 Generate graphics
-      run: |
-        docker run --volume $PWD:/workdir mvillasante/cocijo:latest cocijo write-daily-rain-plot --data-path data/registro_lluvias.csv --output-path lluvia_diaria.png 
-        docker run --volume $PWD:/workdir mvillasante/cocijo:latest cocijo write-cumulative-rain-plot --data-path data/registro_lluvias.csv --output-path lluvia_acumulada.png
     - name: 💫📈 Update graphics
       if: steps.check-figure.outputs.changes == 'true'
       run: |
