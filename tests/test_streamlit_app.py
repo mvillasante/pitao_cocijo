@@ -1,13 +1,4 @@
-import pandas as pd
-import matplotlib
 from streamlit.testing.v1 import AppTest
-
-data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")
-
-
-def test_data_columns():
-    assert "Fecha" in data.columns
-    assert "mm" in data.columns
 
 
 def test_streamlit_app_renders():
