@@ -7,20 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.4.1] - 2024-04-31
-
 ### Added
+
+### Changed
 
 ### Fixed
 
-### Changed
-- Fix repo path
-- Update actions
-
 ### Removed
 
-## [0.4.0] - 2023-08-31
+## [0.1.0] - 2026-11-09
+
+### Added
+- `cocijo` CLI entrypoint (Typer) with `write-daily-rain-plot`,
+  `write-cumulative-rain-plot`, and `version` commands.
+- Streamlit app (`cocijo/streamlit_app.py`) for annual and cumulative
+  rainfall, plus a `streamlit` service in `docker-compose.yml` (port 8501).
 
 
-[unreleased]: https://github.com/IslasGECI/basic_python_project/compare/v1.1.1...HEAD
-[0.0.1]: https://github.com/IslasGECI/basic_python_project/releases/tag/v0.0.1
+### Changed
+- X-axis month labels now rendered in Spanish via Babel (`Enero`, ...).
+- Docker image installs the package with `make install`.
+- Version bumped from 0.0.1 to 0.1.0.
+
+
+[unreleased]: https://github.com/mvillasante/pitao_cocijo/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/mvillasante/pitao_cocijo/releases/tag/v0.1.0
