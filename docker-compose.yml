@@ -1,9 +1,18 @@
 services:
-  develop:
+  main:
     build:
       context: .
       dockerfile: Dockerfile
     image: mvillasante/cocijo:latest
+    command: bash
+    volumes:
+      - $PWD:/workdir
+
+  opencode:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: mvillasante/cocijo_develop:latest
     command: bash
     volumes:
       - $PWD:/workdir
