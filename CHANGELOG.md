@@ -15,20 +15,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+
 ## [0.1.0] - 2026-11-09
 
 ### Added
 - `cocijo` CLI entrypoint (Typer) with `write-daily-rain-plot`,
   `write-cumulative-rain-plot`, and `version` commands.
-- Streamlit app (`cocijo/streamlit_app.py`) for annual and cumulative
-  rainfall, plus a `streamlit` service in `docker-compose.yml` (port 8501).
-
 
 ### Changed
-- X-axis month labels now rendered in Spanish via Babel (`Enero`, ...).
-- Docker image installs the package with `make install`.
-- Version bumped from 0.0.1 to 0.1.0.
-
+- X-axis month labels in `write-daily-rain-plot` and
+  `write-cumulative-rain-plot` output now render in Spanish (`Enero`, ...).
 
 [unreleased]: https://github.com/mvillasante/pitao_cocijo/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/mvillasante/pitao_cocijo/releases/tag/v0.1.0

@@ -4,7 +4,6 @@ Execution order for the release/versioning workflow and the generated README. Se
 
 ## 1. Baseline release (v0.1.0)
 
-- [ ] Commit only the `CHANGELOG.md` 0.1.0 entry; leave the unrelated `docker-compose.yml` change out.
 - [ ] Confirm `cocijo/__init__.py` is `0.1.0` and `make check` / `make tests` pass.
 - [ ] Create the immutable tag `v0.1.0` at the new HEAD.
 - [ ] Move `latest` to `v0.1.0`.

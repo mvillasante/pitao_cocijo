@@ -6,16 +6,16 @@ Guidance for AI agents and contributors working in this repository.
 
 **Pitao Cocijo** visualizes daily and cumulative rainfall for San Pablo Villa de Mitla, Oaxaca.
 
-- Data: `data/registro_lluvias.csv` (`Fecha,mm`). It only lists days with rain — there are no zero entries.
-- Package: `cocijo/`, built with flit (`module = "cocijo"`).
-- CLI: Typer app in `cocijo/cli.py`, entrypoint `cocijo` (`[tool.flit.scripts]`).
+- Data: `data/registro_lluvias.csv` (`Fecha,mm`); 99 rainy days, 2024-02-17 to 2026-10-09. No zero entries.
+- Package: `cocijo/`; flit backend, `module = "cocijo"`, `requires-python >= 3.9`. `pyproject.toml` has no `version`; flit reads `cocijo.__version__`.
+- CLI: Typer app in `cocijo/cli.py`; entrypoint `cocijo` (`[tool.flit.scripts]`). A `typer.Option()` with no default is required.
 - Plots: `cocijo/plot_series.py` (matplotlib; Spanish month labels via Babel).
-- Web UI: `cocijo/streamlit_app.py` (Streamlit).
-- Tests: `pytest` under `tests/`; quality gate `make check` (black, flake8, mypy).
-- CI: `.github/workflows/actions.yml`, runs on every push to `develop`.
+- Web UI: `cocijo/streamlit_app.py`; reads `data/registro_lluvias.csv` relative to CWD, so run it from the repo root.
+- CI: `.github/workflows/actions.yml`, only on `develop`; builds `mvillasante/cocijo:latest` and runs the checks inside that image.
 
 ## Versioning and release policy
-
+- `CHANGELOG.md` follows Keep a Changelog.
+- No container registry publishing and no GitHub Releases; images are build-only.
 ### Source of truth
 
 `cocijo/__init__.py` `__version__` is the single editable version. Flit reads it at build time. CI verifies it is valid semver, matches the release tag, and has a matching changelog section.
@@ -35,7 +35,6 @@ Guidance for AI agents and contributors working in this repository.
 | Bug fix, data refresh, dependency patch | PATCH |
 | New Streamlit view | MINOR |
 | Cosmetic UI change | PATCH |
-| Changes to `cocijo/plot_series.py` internals | PATCH (not public API) |
 
 Pre-1.0: stay on `0.x` and bump **MINOR** for breaking changes. A deliberate `1.0.0` comes later, once the command set stabilizes.
 
@@ -52,31 +51,36 @@ Pre-1.0: stay on `0.x` and bump **MINOR** for breaking changes. A deliberate `1.
 - No GitHub Releases — git tags only.
 - Plot auto-commit behavior stays as-is (regenerate, commit, then tag).
 
-## README generation
+## Commands
 
-`README.md` is generated output from a Jinja2 template:
+- `make check` — black (line length 100), flake8, mypy. `.flake8` ignores E501, so black alone enforces line length.
+- `make tests` — `pytest --verbose`.
+- `make coverage` — runs `setup` (`clean` + editable install) first, then pytest with `coverage.xml`.
+- `make mutants` — also runs `setup` first.
+- `make green` / `red` / `refactor` — auto-commit source and test changes; `refactor` uses `$m`, which expands empty.
+- `make clean` — removes caches and `coverage.xml`, but not images that tests write under `tests/`.
 
-```
-cocijo update-readme --data-path data/registro_lluvias.csv
-```
+## Testing quirks
 
-- Template: `docs/README.md.jinja` (resolved relative to the repo root).
-- Output: `README.md` (committed; CI regenerates and commits changes).
-- Command options: `--data-path` (required), `--template-path` (default `docs/README.md.jinja`), `--output-path` (default `README.md`).
-- Context dict: `min`, `q1`, `median`, `q3`, `max`, `count`, `start`, `end`, `years`, `unit`.
-- Five-number summary: daily `mm`, all years pooled; Spanish labels (`Resumen de cinco números`, `Mínimo`, `Cuartil 1 (Q1)`, `Mediana`, `Cuartil 3 (Q3)`, `Máximo`).
-- Numbers: up to 2 decimals, trailing zeros trimmed (e.g. `2`, `3.25`, `8`, `16.25`, `70`).
-- Placement: before the plots, under `## Resumen de cinco números`.
+- `tests/test_plot_series.py::tests_plot_yearly_rain` is collected: pytest's default `test*` prefix also matches `tests_`.
+- `tests/test_streamlit_app.py` hardcodes `/workdir/cocijo/streamlit_app.py`; it only passes inside the container or at `/workdir`.
+- The plot tests write `tests/lluvia_*.png`; these are untracked and survive `make clean`.
+- CLI and plot tests read `tests/data/registro_lluvias_for_test.csv`.
+
+## Public interface
+
+The public API is the CLI commands; `cocijo/plot_series.py` functions are internal. `DOCS.md` should list the elements and does not exist yet.
+
 
 ## Working agreements
 
-- Do not bundle unrelated changes into release commits (for example, the pending `docker-compose.yml` edit).
-- Update `CHANGELOG.md` for every user-visible change.
-- Run `make check` and `make tests` before committing.
+- Update `CHANGELOG.md` for user-visible changes.
 - Commit messages use emoji prefixes; Conventional Commits are not required.
-- The release workflow may push generated commits, so its tagging step must be idempotent.
+- Run `make check` and `make tests` before committing.
+- `README.md` will be generated from a template; see `TODO.md`.
 
 ## Open decisions
 
 - Changelog authoring stays manual for now; CI only checks that a version section exists.
 - The semver policy should also be published in `CONTRIBUTING.md` (not yet created).
+
