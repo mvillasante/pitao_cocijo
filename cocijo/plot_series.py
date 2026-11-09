@@ -52,7 +52,7 @@ def plot_series(raw_data):
 def setup_data(raw_data):
     data = raw_data.copy()
     data["Fecha"] = pd.to_datetime(data["Fecha"], format="%Y-%m-%d")
-    data["dia_del_año"] = data["Fecha"].dt.dayofyear
+    data["dia_del_año"] = data["Fecha"].dt.day_of_year
     return data
 
 
