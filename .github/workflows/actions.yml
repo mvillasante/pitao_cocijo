@@ -48,7 +48,7 @@ jobs:
         git commit -m "🤖📈 generated"
         git push
     - name: 🏷️ Create/Update tag
-      uses: rickstaa/action-create-tag@vmain
+      uses: rickstaa/action-create-tag@main
       with:
         tag: "latest"
         message: "Latest release"
