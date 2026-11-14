@@ -7,6 +7,8 @@ parameter](https://github.com/mvillasante/pitao_cocijo/actions/workflows/actions
 ![licencia](https://img.shields.io/github/license/mvillasante/pitao_cocijo)
 ![languages](https://img.shields.io/github/languages/top/mvillasante/pitao_cocijo)
 ![commits](https://img.shields.io/github/commit-activity/y/mvillasante/pitao_cocijo)
+[![codecov](https://codecov.io/gh/mvillasante/pitao_cocijo/graph/badge.svg)](https://codecov.io/gh/mvillasante/pitao_cocijo)
+
 
 ## Qué hace
 
