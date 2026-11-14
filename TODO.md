@@ -2,14 +2,8 @@
 
 Execution order for the release/versioning workflow and the generated README. See `AGENTS.md` for the decisions behind each step.
 
-## 1. Baseline release (v0.1.0)
 
-- [X] Confirm `cocijo/__init__.py` is `0.1.0` and `make check` / `make tests` pass.
-- [x] Create the immutable tag `v0.1.0` at the new HEAD.
-- [x] Move `latest` to `v0.1.0`.
-- [x] Push `develop` and the tags.
-
-## 2. README templating
+## 1. README templating
 
 - [ ] Add `jinja2` to `pyproject.toml` dependencies.
 - [ ] Create `docs/README.md.jinja` from the current `README.md`.
@@ -25,8 +19,9 @@ Execution order for the release/versioning workflow and the generated README. Se
   - [ ] missing or empty CSV exits non-zero
   - [ ] missing template exits non-zero
 - [ ] Regenerate `README.md` and commit it.
+- [ ] Regenerate `lluvia_diaria.png` and `lluvia_acumulada.png` from the current data and commit them; the data refresh added 2026-11-12 and 2026-11-13.
 
-## 3. CI release workflow
+## 2. CI release workflow
 
 - [ ] Read `__version__` on push to `develop`.
 - [ ] Validate the semver format.
@@ -36,11 +31,14 @@ Execution order for the release/versioning workflow and the generated README. Se
 - [ ] Regenerate the README before the figure check; commit the generated README and plots.
 - [ ] Create/move tags only after the generated commits.
 - [ ] Make re-runs idempotent (existing tag means no-op).
+- [ ] Remove the unused hardcoded `codecov_token` from `Makefile`; CI uses `secrets.CODECOV_TOKEN`.
 
-## 4. Documentation
+## 3. Documentation
 
 - [ ] Create `CONTRIBUTING.md` with the semver policy table.
 - [ ] Add a `0.2.0` entry to `CHANGELOG.md` covering `update-readme`.
+- [ ] Point `pyproject.toml` `home-page` at `https://github.com/mvillasante/pitao_cocijo` instead of the `IslasGECI/module` template URL.
+- [ ] Replace the `cocijo/__init__.py` docstring "A template Python module".
 
 ## Deferred
 

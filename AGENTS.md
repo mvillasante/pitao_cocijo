@@ -6,7 +6,7 @@ Guidance for AI agents and contributors working in this repository.
 
 **Pitao Cocijo** visualizes daily and cumulative rainfall for San Pablo Villa de Mitla, Oaxaca.
 
-- Data: `data/registro_lluvias.csv` (`Fecha,mm`); 99 rainy days, 2024-02-17 to 2026-10-09. No zero entries.
+- Data: `data/registro_lluvias.csv` (`Fecha,mm`); 101 rainy days, 2024-02-17 to 2026-11-13. No zero entries.
 - Package: `cocijo/`; flit backend, `module = "cocijo"`, `requires-python >= 3.9`. `pyproject.toml` has no `version`; flit reads `cocijo.__version__`.
 - CLI: Typer app in `cocijo/cli.py`; entrypoint `cocijo` (`[tool.flit.scripts]`). A `typer.Option()` with no default is required.
 - Plots: `cocijo/plot_series.py` (matplotlib; Spanish month labels via Babel).
@@ -53,23 +53,27 @@ Pre-1.0: stay on `0.x` and bump **MINOR** for breaking changes. A deliberate `1.
 
 ## Commands
 
+- `make all` — `check`, then `coverage`, then `mutants`; the slowest path.
 - `make check` — black (line length 100), flake8, mypy. `.flake8` ignores E501, so black alone enforces line length.
 - `make tests` — `pytest --verbose`.
 - `make coverage` — runs `setup` (`clean` + editable install) first, then pytest with `coverage.xml`.
 - `make mutants` — also runs `setup` first.
 - `make green` / `red` / `refactor` — auto-commit source and test changes; `refactor` uses `$m`, which expands empty.
-- `make clean` — removes caches and `coverage.xml`, but not images that tests write under `tests/`.
+- `make clean` — removes caches, `.mutmut-cache`, and `coverage.xml`; it does not remove PNGs left under `tests/`.
+- `make init` — `init_git` + `setup` + `tests`. Run it once inside the container: `init_git` sets `safe.directory=/workdir`, without which git aborts every command with "dubious ownership".
+- `make format` / `make install` — rewrite code with black / editable install; `setup` is `clean` + `install`.
 
 ## Testing quirks
 
 - `tests/test_plot_series.py::tests_plot_yearly_rain` is collected: pytest's default `test*` prefix also matches `tests_`.
 - `tests/test_streamlit_app.py` hardcodes `/workdir/cocijo/streamlit_app.py`; it only passes inside the container or at `/workdir`.
-- The plot tests write `tests/lluvia_*.png`; these are untracked and survive `make clean`.
+- `tests/test_cli.py` writes `tests/data/lluvia_{diaria,acumulada}.png` and deletes them after each assertion; a failed test leaves the PNG untracked, and `make clean` does not remove it.
+- `tests/test_cli.py::test_version` asserts the literal `0.1.0`; a version bump must update that test.
 - CLI and plot tests read `tests/data/registro_lluvias_for_test.csv`.
 
 ## Public interface
 
-The public API is the CLI commands; `cocijo/plot_series.py` functions are internal. `DOCS.md` should list the elements and does not exist yet.
+The public API is the CLI commands; `cocijo/plot_series.py` functions are internal. `DOCS.md` lists the elements.
 
 
 ## Working agreements
