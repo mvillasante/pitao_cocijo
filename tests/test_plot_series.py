@@ -5,22 +5,20 @@ from cocijo.plot_series import (
     plot_yearly_rain,
 )
 
-import pandas as pd
 import matplotlib
+import pandas as pd
 
 data = pd.read_csv("tests/data/registro_lluvias_for_test.csv")
 
 
 def tests_plot_yearly_rain():
     obtained = plot_yearly_rain(data)
-    matplotlib.pyplot.savefig("tests/lluvia_diaria_por_año.png")
     obtained_lines = obtained.get_lines()
     assert len(obtained_lines) == 2
 
 
 def test_plot_series():
     obtained = plot_series(data)
-    matplotlib.pyplot.savefig("tests/lluvia_diaria.png")
     assert isinstance(obtained, matplotlib.axes._axes.Axes)
     assert obtained.get_xticklabels()[1].get_rotation() == 90
     assert obtained.get_ylabel() == "Lluvia díaria (mm)"
@@ -35,7 +33,6 @@ def test_plot_series():
 
 def test_plot_cumulative():
     obtained = plot_cumulative(data)
-    matplotlib.pyplot.savefig("tests/lluvia_acumulada.png")
     obtained_first_line = obtained.get_lines()[0]
     assert max(obtained_first_line.get_data()[1]) > data.mm.max()
     assert obtained_first_line.get_marker() == "."
