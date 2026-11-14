@@ -17,6 +17,7 @@ def test_write_cumulative_rain():
     )
     assert result.exit_code == 0
     assert os.path.isfile(output_path)
+    if_exist_remove(output_path)
 
 
 def test_write_daily_rain():
@@ -31,6 +32,7 @@ def test_write_daily_rain():
     )
     assert result.exit_code == 0
     assert os.path.isfile(output_path)
+    if_exist_remove(output_path)
 
 
 def test_version():
