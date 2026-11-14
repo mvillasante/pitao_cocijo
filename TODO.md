@@ -4,10 +4,10 @@ Execution order for the release/versioning workflow and the generated README. Se
 
 ## 1. Baseline release (v0.1.0)
 
-- [ ] Confirm `cocijo/__init__.py` is `0.1.0` and `make check` / `make tests` pass.
-- [ ] Create the immutable tag `v0.1.0` at the new HEAD.
-- [ ] Move `latest` to `v0.1.0`.
-- [ ] Push `develop` and the tags.
+- [X] Confirm `cocijo/__init__.py` is `0.1.0` and `make check` / `make tests` pass.
+- [x] Create the immutable tag `v0.1.0` at the new HEAD.
+- [x] Move `latest` to `v0.1.0`.
+- [x] Push `develop` and the tags.
 
 ## 2. README templating
 
