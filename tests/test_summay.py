@@ -1,4 +1,4 @@
-from cocijo.summary import get_five_numbers
+from cocijo.summary import get_five_numbers, render_template
 
 import pandas as pd
 
@@ -19,3 +19,10 @@ def test_get_five_numbers():
     assert obtained["q1"] == expected_q1
     assert obtained["median"] == expected_median
     assert obtained["q3"] == expected_q3
+
+
+def test_render_template():
+    template_path = "tests/data/README_for_tests.md"
+    summary_variables = {"median": 123}
+    obtained = render_template(template_path, summary_variables)
+    assert "123" in obtained
