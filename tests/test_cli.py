@@ -31,6 +31,7 @@ def test_update_readme():
     )
     assert result.exit_code == 0
     assert os.path.isfile(output_path)
+    if_exist_remove(output_path)
 
 
 def test_write_cumulative_rain():
