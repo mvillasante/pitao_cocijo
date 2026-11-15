@@ -5,6 +5,11 @@ import os
 runner = CliRunner()
 
 
+def test_update_readme():
+    result = runner.invoke(app, ["update-readme", "--help"])
+    assert result.exit_code == 0
+
+
 def test_write_cumulative_rain():
     result = runner.invoke(app, ["write-cumulative-rain-plot", "--help"])
     assert result.exit_code == 0
