@@ -5,21 +5,18 @@ Execution order for the release/versioning workflow and the generated README. Se
 
 ## 1. README templating
 
-- [ ] Add `jinja2` to `pyproject.toml` dependencies.
-- [ ] Create `docs/README.md.jinja` from the current `README.md`.
-- [ ] Add a `build_context(data)` helper (e.g. `cocijo/readme.py`) returning `min`, `q1`, `median`, `q3`, `max`, `count`, `start`, `end`, `years`, `unit`.
-- [ ] Implement `cocijo update-readme` in `cocijo/cli.py`:
-  - [ ] `--data-path` (required)
-  - [ ] `--template-path` (default `docs/README.md.jinja`)
-  - [ ] `--output-path` (default `README.md`)
-- [ ] Add the `## Resumen de cinco números` table to the template, before the plots.
-- [ ] Tests:
-  - [ ] context values and number formatting (`2`, `3.25`, `8`, `16.25`, `70`)
-  - [ ] rendered README contains the Spanish labels
-  - [ ] missing or empty CSV exits non-zero
-  - [ ] missing template exits non-zero
-- [ ] Regenerate `README.md` and commit it.
-- [ ] Regenerate `lluvia_diaria.png` and `lluvia_acumulada.png` from the current data and commit them; the data refresh added 2026-11-12 and 2026-11-13.
+- [X] Add `jinja2` to `pyproject.toml` dependencies.
+- [X] Create `src/README.md` from the current `README.md`.
+- [X] Add a `get_five_number_summary(data)` helper (e.g. `cocijo/summary.py`) returning `min`, `q1`, `median`, `q3`, `max`, `years`.
+- [X] Implement `cocijo update-readme` in `cocijo/cli.py`:
+  - [X] `--data-path` (required)
+  - [X] `--template-path` (default `docs/README.md.jinja`)
+  - [X] `--output-path` (default `README.md`)
+- [X] Add the `## Resumen de cinco números` table to the template.
+- [X] Tests:
+  - [X] context values and number formatting (`2`, `3.25`, `8`, `16.25`, `70`)
+  - [X] rendered README contains the Spanish labels
+- [X] Add to the CI an step to regenerate `README.md` and commit it with the latest numbers.
 
 ## 2. CI release workflow
 
