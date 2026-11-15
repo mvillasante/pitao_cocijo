@@ -3,22 +3,17 @@
 Execution order for the release/versioning workflow and the generated README. See `AGENTS.md` for the decisions behind each step.
 
 
-## 1. README templating
+## 1. Add info to README
+- [ ] Agregar el dato de la última lluvia
+- [ ] Agregar el dato de la lluvia acumulada del año hasta la fecha (puede ser en la figura)
+- [ ] Agregar el total de lluvia de cada año (puede ser que sea en la figura)
+- [ ] Mejorar las secciones "Antes de empezar" en adelante. REAMDE debe ser primeramente informativo con respecto al estado de la precipitación. Las secciones posteriores deben mostrar información de como usar el paquete.
 
-- [X] Add `jinja2` to `pyproject.toml` dependencies.
-- [X] Create `src/README.md` from the current `README.md`.
-- [X] Add a `get_five_number_summary(data)` helper (e.g. `cocijo/summary.py`) returning `min`, `q1`, `median`, `q3`, `max`, `years`.
-- [X] Implement `cocijo update-readme` in `cocijo/cli.py`:
-  - [X] `--data-path` (required)
-  - [X] `--template-path` (default `docs/README.md.jinja`)
-  - [X] `--output-path` (default `README.md`)
-- [X] Add the `## Resumen de cinco números` table to the template.
-- [X] Tests:
-  - [X] context values and number formatting (`2`, `3.25`, `8`, `16.25`, `70`)
-  - [X] rendered README contains the Spanish labels
-- [X] Add to the CI an step to regenerate `README.md` and commit it with the latest numbers.
+## 2. Technical debt
+- [ ] @cocijo/cli.py should import `__version___` not all `cocijo`
+- [ ] On cocijo/__init__.py import only the public interface 
 
-## 2. CI release workflow
+## 3. CI release workflow
 
 - [ ] Read `__version__` on push to `develop`.
 - [ ] Validate the semver format.
@@ -30,7 +25,7 @@ Execution order for the release/versioning workflow and the generated README. Se
 - [ ] Make re-runs idempotent (existing tag means no-op).
 - [ ] Remove the unused hardcoded `codecov_token` from `Makefile`; CI uses `secrets.CODECOV_TOKEN`.
 
-## 3. Documentation
+## 4. Documentation
 
 - [ ] Create `CONTRIBUTING.md` with the semver policy table.
 - [ ] Add a `0.2.0` entry to `CHANGELOG.md` covering `update-readme`.

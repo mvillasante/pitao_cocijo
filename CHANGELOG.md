@@ -8,10 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `cocijo update-readme` command renders a README from a Jinja2 template,
+  filling in the five-number summary of the `mm` column.
 
 ### Changed
-- CI regenerates `README.md` with `cocijo update-readme` and commits it
-  when the summary numbers change.
 
 ### Fixed
 

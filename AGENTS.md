@@ -70,10 +70,11 @@ Pre-1.0: stay on `0.x` and bump **MINOR** for breaking changes. A deliberate `1.
 - `tests/test_cli.py` writes `tests/data/lluvia_{diaria,acumulada}.png` and deletes them after each assertion; a failed test leaves the PNG untracked, and `make clean` does not remove it.
 - `tests/test_cli.py::test_version` asserts the literal `0.1.0`; a version bump must update that test.
 - CLI and plot tests read `tests/data/registro_lluvias_for_test.csv`.
+- There is no `.gitignore`; `make tests` leaves untracked `__pycache__/` under `cocijo/` and `tests/`, so `git status` is dirty until `make clean`.
 
 ## Public interface
 
-The public API is the CLI commands; `cocijo/plot_series.py` functions are internal. `DOCS.md` lists the elements.
+The public API is the CLI commands; `cocijo/plot_series.py` and `cocijo/summary.py` functions are internal. `DOCS.md` lists the elements.
 
 
 ## Working agreements
@@ -81,7 +82,7 @@ The public API is the CLI commands; `cocijo/plot_series.py` functions are intern
 - Update `CHANGELOG.md` for user-visible changes.
 - Commit messages use emoji prefixes; Conventional Commits are not required.
 - Run `make check` and `make tests` before committing.
-- `README.md` will be generated from a template; see `TODO.md`.
+- `README.md` is generated from the Jinja2 template `src/README.md` by the `update-readme` command; CI regenerates and commits it on push to `develop`.
 
 ## Open decisions
 
