@@ -20,7 +20,7 @@ def update_readme(
     summary = get_five_numbers(data)
     template_with_summary = render_template(template_path, summary)
     with open(output_path, "w") as doc:
-        doc.writelines(template_with_summary)
+        doc.writelines(template_with_summary + "\n")
 
 
 @app.command()
