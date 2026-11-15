@@ -2,28 +2,40 @@
 
 Lluvia diaria y acumulada en San Pablo Villa de Mitla, Oaxaca.
 
-![example branch
-parameter](https://github.com/mvillasante/pitao_cocijo/actions/workflows/actions.yml/badge.svg)
+![actions](https://github.com/mvillasante/pitao_cocijo/actions/workflows/actions.yml/badge.svg)
 ![licencia](https://img.shields.io/github/license/mvillasante/pitao_cocijo)
 ![languages](https://img.shields.io/github/languages/top/mvillasante/pitao_cocijo)
 ![commits](https://img.shields.io/github/commit-activity/y/mvillasante/pitao_cocijo)
 [![codecov](https://codecov.io/gh/mvillasante/pitao_cocijo/graph/badge.svg)](https://codecov.io/gh/mvillasante/pitao_cocijo)
 
 
-## Qué hace
-
-Muestra cómo ha llovido en San Pablo Villa de Mitla. Con dos gráficas puedes comparar los años y seguir el avance de la temporada de lluvias:
 
 - **Lluvia diaria**: los milímetros que cayeron cada día, agrupados por año.
-- **Lluvia acumulada**: la suma de la lluvia a lo largo de cada año.
-
 ![Lluvia diaria](lluvia_diaria.png)
 
+- **Lluvia acumulada**: la suma de la lluvia a lo largo de cada año.
 ![Lluvia acumulada](lluvia_acumulada.png)
 
-## Uso
 
-Cada color representa un año distinto. La primera gráfica muestra los días con lluvia; la segunda, cuánto se ha acumulado.
+Cada color representa un año distinto. La primera gráfica muestra los días con lluvia; la segunda, cuánto se ha acumulado durante el año en curso hasta la fecha.
+
+## Resumen de cinco números
+
+| Estadístico | Lluvia (mm) |
+| --- | ---: |
+| Mínimo | 2.0 |
+| Cuartil 1 (25%) | 2.5 |
+| Mediana | 7.5 |
+| Cuartil 3 (75%) | 15.0 |
+| Máximo | 70.0 |
+
+El resumen de cinco números es un conjunto de estadísticas descriptivas que aporta información sobre un conjunto de datos. Consta de los cinco [percentiles](https://en.wikipedia.org/wiki/Percentile) más importantes:
+- el mínimo muestral (la observación más pequeña)
+- el [cuartil](https://en.wikipedia.org/wiki/Quartile) inferior o primer cuartil
+- la [mediana](https://en.wikipedia.org/wiki/Median) (el valor central)
+- el cuartil superior o tercer cuartil
+- el máximo muestral (la observación más grande)
+
 
 ## Antes de empezar
 
