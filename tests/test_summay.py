@@ -16,6 +16,6 @@ def test_get_five_numbers():
     expected_q3 = 28
     assert obtained["max"] == expected_max
     assert obtained["min"] == expected_min
-    assert obtained["q1"] == expected_max
-    assert obtained["median"] == expected_max
-    assert obtained["q3"] == expected_max
+    assert obtained["q1"] == expected_q1
+    assert obtained["median"] == expected_median
+    assert obtained["q3"] == expected_q3
