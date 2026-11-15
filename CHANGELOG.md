@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
+- CI regenerates `README.md` with `cocijo update-readme` and commits it
+  when the summary numbers change.
 
 ### Fixed
 
