@@ -1,2 +1,8 @@
 def get_five_numbers(data):
-    return {"min": None, "q1": None, "median": None, "q3": None, "max": data["mm"].max()}
+    return {
+        "min": data["mm"].min(),
+        "q1": data.mm.quantile(0.25),
+        "median": data.mm.median(),
+        "q3": data.mm.quantile(0.75),
+        "max": data["mm"].max(),
+    }
